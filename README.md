@@ -4,11 +4,13 @@ Those who will use this project are people who work daily in customer service, f
 
 
 
-
+**Aplicativo para empresa de registro de atendimento**
 Um projeto da faculdade, que visa criar um banco de dados relacional utilizando POSTGRESQL.
 O tema escolhido por mim e pelos meus amigos foi: 
 Aplicativo para empresa de registro de atendimento (controle de filas, registro de atendentes e pessoas atendidas).
 Quem vai utilizar esse projeto seriam as pessoas que trabalham diariamente com atendimento, desde vendedores locais com minimercado até bancos.
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ```mermaid
 erDiagram
