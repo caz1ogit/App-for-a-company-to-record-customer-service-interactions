@@ -1,4 +1,4 @@
-**App-for-a-company-to-record-customer-service-interactions - V1.01**
+**App-for-a-company-to-record-customer-service-interactions - V1.02**
 A college project aimed at creating a relational database using PostgreSQL.  The topic chosen by me and my friends was: Application for a company to record customer service (queue management, registration of attendants and customers served).
 Those who will use this project are people who work daily in customer service, from local vendors with mini-markets to banks.
 
