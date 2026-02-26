@@ -70,7 +70,7 @@ erDiagram
         int id PK
         string meta_batida
         datetime data_batida
-        string premio
+        int id_premio FK
         int id_atendente FK
     }
 
@@ -81,16 +81,36 @@ erDiagram
         string observacoes
     }
 
+    PREMIO {
+        int id PK
+        string nome_premio
+    }
+
+    LOJA {
+        int id PK
+        int id_premio FK
+        float preco_recompensa
+        int quantidade
+        int id_atendente FK
+        datetime data_retirada
+        datetime data_adicao
+    }
+
     %% Relações Originais
     CLIENTE ||--o{ ATENDIMENTO : solicita
     ATENDENTE ||--o{ ATENDIMENTO : realiza
     PRIORIDADE ||--o{ ATENDIMENTO : possui
     STATUS ||--o{ ATENDIMENTO : define
 
-    %% Novas Relações (Gamificação, Região)
+    %% Relações (Gamificação, Região)
     SERVIDOR ||--o{ CLIENTE : abrange
     SERVIDOR ||--o{ ATENDENTE : aloca
     ATENDENTE ||--o{ METAS_BATIDAS : conquista
     
     %% Relação da Avaliação
     ATENDIMENTO ||--o| AVALIACAO : recebe
+
+    %% Novas Relações (Loja e Prêmios)
+    PREMIO ||--o{ METAS_BATIDAS : recompensa
+    PREMIO ||--o{ LOJA : disponivel_em
+    ATENDENTE ||--o{ LOJA : retira_item
