@@ -10,7 +10,7 @@ O tema escolhido por mim e pelos meus amigos foi:
 Aplicativo para empresa de registro de atendimento (controle de filas, registro de atendentes e pessoas atendidas).
 
 Quem vai utilizar esse projeto seriam as pessoas que trabalham diariamente com atendimento, desde vendedores locais com minimercado até bancos.
-'''mermaid
+```mermaid
 erDiagram
     %% Suas tabelas originais
     CLIENTE {
