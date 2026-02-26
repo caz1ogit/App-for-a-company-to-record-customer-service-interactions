@@ -12,7 +12,6 @@ Aplicativo para empresa de registro de atendimento (controle de filas, registro 
 Quem vai utilizar esse projeto seriam as pessoas que trabalham diariamente com atendimento, desde vendedores locais com minimercado até bancos.
 
 erDiagram
-    %% Suas tabelas originais
     CLIENTE {
         int id PK
         string nome
