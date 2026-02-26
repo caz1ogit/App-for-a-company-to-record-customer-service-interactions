@@ -1,4 +1,4 @@
-**App-for-a-company-to-record-customer-service-interactions - V1.02**
+**App-for-a-company-to-record-customer-service-interactions - V1.03**
 A college project aimed at creating a relational database using PostgreSQL.  The topic chosen by me and my friends was:
 Application for a company to record customer service (queue management, registration of attendants and customers served).
 
@@ -7,7 +7,7 @@ Those who will use this project are people who work daily in customer service, f
 
 
 
-**Aplicativo para empresa de registro de atendimento - V1.02**
+**Aplicativo para empresa de registro de atendimento - V1.03**
 Um projeto da faculdade, que visa criar um banco de dados relacional utilizando POSTGRESQL.
 O tema escolhido por mim e pelos meus amigos foi: 
 
@@ -26,6 +26,7 @@ erDiagram
         string cpf
         string email
         string telefone
+        int id_estado FK
     }
 
     ATENDENTE {
@@ -35,6 +36,7 @@ erDiagram
         string cpf
         string matricula
         string telefone
+        int id_estado FK
     }
 
     PRIORIDADE {
@@ -58,8 +60,37 @@ erDiagram
         datetime data_fim
     }
 
-    %% Relações (Ligando as tabelas)
+    SERVIDOR {
+        int id PK
+        string nome_estado
+        int meta
+    }
+
+    METAS_BATIDAS {
+        int id PK
+        string meta_batida
+        datetime data_batida
+        string premio
+        int id_atendente FK
+    }
+
+    AVALIACAO {
+        int id PK
+        int id_atendimento FK
+        int nota
+        string observacoes
+    }
+
+    %% Relações Originais
     CLIENTE ||--o{ ATENDIMENTO : solicita
     ATENDENTE ||--o{ ATENDIMENTO : realiza
     PRIORIDADE ||--o{ ATENDIMENTO : possui
     STATUS ||--o{ ATENDIMENTO : define
+
+    %% Novas Relações (Gamificação, Região)
+    SERVIDOR ||--o{ CLIENTE : abrange
+    SERVIDOR ||--o{ ATENDENTE : aloca
+    ATENDENTE ||--o{ METAS_BATIDAS : conquista
+    
+    %% Relação da Avaliação
+    ATENDIMENTO ||--o| AVALIACAO : recebe
