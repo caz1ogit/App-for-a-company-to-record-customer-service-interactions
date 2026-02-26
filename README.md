@@ -10,8 +10,9 @@ O tema escolhido por mim e pelos meus amigos foi:
 Aplicativo para empresa de registro de atendimento (controle de filas, registro de atendentes e pessoas atendidas).
 
 Quem vai utilizar esse projeto seriam as pessoas que trabalham diariamente com atendimento, desde vendedores locais com minimercado até bancos.
-```mermaid
+
 erDiagram
+    %% Suas tabelas originais
     CLIENTE {
         int id PK
         string nome
@@ -20,6 +21,7 @@ erDiagram
         string telefone
     }
 
+  
     ATENDENTE {
         int id PK
         string nome
@@ -27,7 +29,6 @@ erDiagram
         string cpf
         string matricula
         string telefone
-        int saldo_verba %% Nova coluna para o jogo
     }
 
     PRIORIDADE {
@@ -51,6 +52,7 @@ erDiagram
         datetime data_fim
     }
 
+    %% Novas tabelas de Gamificacao
     ESTADO {
         int id PK
         string sigla
@@ -72,7 +74,7 @@ erDiagram
         int id_estado FK
     }
 
-    %% Relações Originais
+    %% Relacoes
     CLIENTE ||--o{ ATENDIMENTO : solicita
     ATENDENTE ||--o{ ATENDIMENTO : realiza
     PRIORIDADE ||--o{ ATENDIMENTO : possui
