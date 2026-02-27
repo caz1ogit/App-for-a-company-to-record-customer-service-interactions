@@ -20,23 +20,23 @@ Quem vai utilizar esse projeto seriam as pessoas que trabalham diariamente com a
 
 ```mermaid
 erDiagram
-    CLIENTE {
+    PESSOAS {
         int id PK
         string nome
+        string sexo
         string cpf
-        string email
         string telefone
+        string email
+        string senha
         int id_estado FK
     }
 
-    ATENDENTE {
+    ATENDENTES {
         int id PK
-        string nome
-        string setor
-        string cpf
-        string matricula
-        string telefone
-        int id_estado FK
+        int id_pessoa FK
+        string cargo
+        datetime data_inicio
+        datetime data_fim
     }
 
     PRIORIDADE {
@@ -51,7 +51,7 @@ erDiagram
 
     ATENDIMENTO {
         int id PK
-        int id_cliente FK
+        int id_pessoas FK
         int id_atendente FK
         int id_prioridade FK
         int id_status FK
@@ -96,20 +96,26 @@ erDiagram
         datetime data_adicao
     }
 
-    %% Relações Originais
-    CLIENTE ||--o{ ATENDIMENTO : solicita
-    ATENDENTE ||--o{ ATENDIMENTO : realiza
+    %% Relações da Herança (Pessoas e Atendentes)
+    PESSOAS ||--o| ATENDENTES : "pode ser"
+
+    %% Relações do Atendimento
+    PESSOAS ||--o{ ATENDIMENTO : solicita
+    ATENDENTES ||--o{ ATENDIMENTO : realiza
     PRIORIDADE ||--o{ ATENDIMENTO : possui
     STATUS ||--o{ ATENDIMENTO : define
 
-    %% Relações (Gamificação, Região)
-    SERVIDOR ||--o{ CLIENTE : abrange
-    SERVIDOR ||--o{ ATENDENTE : aloca
-    ATENDENTE ||--o{ METAS_BATIDAS : conquista
+    %% Relações de Região
+    SERVIDOR ||--o{ PESSOAS : abrange
     
-    %% Relação da Avaliação
+    %% Relações de Gamificação e Avaliação
+    ATENDENTES ||--o{ METAS_BATIDAS : conquista
     ATENDIMENTO ||--o| AVALIACAO : recebe
 
+    %% Relações de Loja e Prêmios
+    PREMIO ||--o{ METAS_BATIDAS : recompensa
+    PREMIO ||--o{ LOJA : disponivel_em
+    ATENDENTES ||--o{ LOJA : retira_item
     %% Novas Relações (Loja e Prêmios)
     PREMIO ||--o{ METAS_BATIDAS : recompensa
     PREMIO ||--o{ LOJA : disponivel_em
