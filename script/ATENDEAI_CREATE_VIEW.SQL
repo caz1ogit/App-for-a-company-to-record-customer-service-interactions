@@ -1,6 +1,6 @@
-create view testefaculdade.view_atendimentos_fila as
-select testefaculdade.atendimento.id, testefaculdade.pessoa.nome, testefaculdade.atendimento.id_atendetente, testefaculdade.status.descricao as status, testefaculdade.prioridade.descricao as prioridade, testefaculdade.atendimento.data_chegada
-from testefaculdade.atendimento
-join testefaculdade.pessoa on testefaculdade.atendimento.id_pessoa = testefaculdade.pessoa.id
-join testefaculdade.status on testefaculdade.atendimento.id_status = testefaculdade.status.id
-join testefaculdade.prioridade on testefaculdade.atendimento.id_prioridade = testefaculdade.prioridade.id;
+create view public.view_atendimentos_fila as
+select public.atendimento.id, public.pessoa.nome, public.atendimento.id_atendetente, public.status.descricao as status, public.prioridade.descricao as prioridade, public.atendimento.data_chegada
+from public.atendimento
+join public.pessoa on public.atendimento.id_pessoa = public.pessoa.id
+join public.status on public.atendimento.id_status = public.status.id
+join public.prioridade on public.atendimento.id_prioridade = public.prioridade.id;
